@@ -12,7 +12,7 @@ const GITHUB_BRANCH = 'main';
 
 const ALLOWED_FILES = [
   'index.html', 'about.html', 'products.html', 'services.html',
-  'blogs.html', 'contact.html',
+  'blogs.html', 'contact.html', 'offers.html' ,
   'blog-astigmatism.html', 'blog-hyperopia.html', 'blog-myopia.html', 'blog-presbyopia.html',
 ];
 
