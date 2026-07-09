@@ -1,12 +1,13 @@
 // Vercel serverless function: writes data/offers.json to the GitHub repo
 // so the static site picks up the change on the next auto-deploy.
 //
-// Required environment variables (set in Vercel project settings):
-//   ADMIN_KEY     - shared secret the admin panel must send in x-admin-key
-//   GITHUB_TOKEN  - GitHub personal access token with repo contents write access
-//   GITHUB_OWNER  - repo owner, e.g. "opticallyyoursthane-crypto"
-//   GITHUB_REPO   - repo name, e.g. "optically-yours"
-//   GITHUB_BRANCH - branch to commit to, e.g. "main" (optional, defaults to "main")
+// Only GITHUB_TOKEN needs to be set in Vercel project settings — it's a real
+// secret and can't safely live in source. Everything else below is hardcoded
+// to match the values already public in the client-side admin code.
+const ADMIN_KEY = '181275';
+const GITHUB_OWNER = 'opticallyyoursthane-crypto';
+const GITHUB_REPO = 'optically-yours';
+const GITHUB_BRANCH = 'main';
 
 const FILE_PATH = 'data/offers.json';
 
@@ -17,7 +18,7 @@ module.exports = async function handler(req, res) {
   }
 
   const adminKey = req.headers['x-admin-key'];
-  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+  if (!adminKey || adminKey !== ADMIN_KEY) {
     res.status(401).json({ error: 'Unauthorized' });
     return;
   }
@@ -39,10 +40,10 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const { GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO } = process.env;
-  const branch = process.env.GITHUB_BRANCH || 'main';
-  if (!GITHUB_TOKEN || !GITHUB_OWNER || !GITHUB_REPO) {
-    res.status(500).json({ error: 'Server is missing GitHub configuration' });
+  const { GITHUB_TOKEN } = process.env;
+  const branch = GITHUB_BRANCH;
+  if (!GITHUB_TOKEN) {
+    res.status(500).json({ error: 'Server is missing GITHUB_TOKEN configuration' });
     return;
   }
 
