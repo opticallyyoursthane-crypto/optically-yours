@@ -4,7 +4,7 @@
 // Required environment variables (set in Vercel project settings):
 //   ADMIN_KEY     - shared secret the admin panel must send in x-admin-key
 //   GITHUB_TOKEN  - GitHub personal access token with repo contents write access
-//   GITHUB_OWNER  - repo owner, e.g. "dhruv3007sethi"
+//   GITHUB_OWNER  - repo owner, e.g. "opticallyyoursthane-crypto"
 //   GITHUB_REPO   - repo name, e.g. "optically-yours"
 //   GITHUB_BRANCH - branch to commit to, e.g. "main" (optional, defaults to "main")
 
