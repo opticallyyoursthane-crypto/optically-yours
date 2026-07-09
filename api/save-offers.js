@@ -4,7 +4,7 @@
 // Only GITHUB_TOKEN needs to be set in Vercel project settings — it's a real
 // secret and can't safely live in source. Everything else below is hardcoded
 // to match the values already public in the client-side admin code.
-const ADMIN_KEY = '123456';
+const ADMIN_KEY = '181275';
 const GITHUB_OWNER = 'opticallyyoursthane-crypto';
 const GITHUB_REPO = 'optically-yours';
 const GITHUB_BRANCH = 'main';
